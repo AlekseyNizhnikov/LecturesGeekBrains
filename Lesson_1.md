@@ -39,3 +39,9 @@
 8. **Git commit -ammend -m "New commit"** - команда терминала, которая позволяет изменить последний коммит. Если нужно изменить конкретный коммит, переходим на более поздний и применяем данную команду.
 
 9. **Git reset** - команда терминала, которая возвращает нас на шаг назад. Смещает master на коммит назад.
+
+10. **Материалы для справки** - 
+* https://www.atlassian.com/ru/git/tutorials/setting-up-a-repository 
+* https://www.atlassian.com/ru/git/tutorials/saving-changes
+* https://www.atlassian.com/ru/git/tutorials/inspecting-a-repository
+* https://www.atlassian.com/ru/git/tutorials/undoing-changes
