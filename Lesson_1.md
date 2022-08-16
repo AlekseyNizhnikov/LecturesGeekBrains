@@ -45,3 +45,8 @@
 * https://www.atlassian.com/ru/git/tutorials/saving-changes
 * https://www.atlassian.com/ru/git/tutorials/inspecting-a-repository
 * https://www.atlassian.com/ru/git/tutorials/undoing-changes
+* Интерактивное приложение: https://learngitbranching.js.org/?locale=ru_RU
+
+11. **Git checkout -b name_branch** - команда терминала, которая создает новую ветку и тутже туда переходит.
+
+12. **Git rebase name_branch** - команда терминала, которая позволяет скопировать все коммиты из текущей ветки в ветку name_branche, создавая при этом в ней новый коммит. Чтобы ветка с которой мы слились поднялась до уровня ветки из которой мы слили, необходимо сменить ветку и применить ту же функцию. Эта команда делает дерево коммитов более линейным, лаконичным и понятным.
