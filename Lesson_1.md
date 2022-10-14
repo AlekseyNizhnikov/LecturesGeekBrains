@@ -387,3 +387,64 @@ void FindWords(string alphabet, char[] word, int length = 0)
          }
     }
  Данный метод хорош, т. к. отвязан от конкретного количества циклов.                                 
+													 
+**Алгоритм обхода директории:**
+Для работы с директориями, существует специальный класс в C# - DirectiryInfo
+DirectoryInfo di = new DirectoryInfo("путь к файлу");
+													  
+Console.WriteLine(di.CreationTime); Данный код, выводит дату создания файла.
+FileInfo[] fi = di.GetFiles(); Посмотреть содержимое папки.	
+Вывод информации осуществляется в массив fi из которого уже можно вытащить нужную нам информацию. Имя, дату создания, размер и т.д..
+
+string path = @(".........");
+void CatalogInfo(string path, string indent = "")
+	{
+		DirectoryInfo catalog = new DirectoryInfo(path);
+		DirectoryInfo[] catalogs = catalog.GetDirectories();
+		for(int i = 0; i < catalogs.Length; i++)
+		{
+			Console.WriteLine($"{indent} {catalogs[i].Name}");
+			CatalogInfo(catalogs[i].FullName, indent + " ");
+			FileInfo[] files = catalog.GetFiles();
+			for(int i = 0; i < files/Length; i++)
+			{
+				Console.WriteLine($"{indent} {files[i].Name}");
+			}							
+		}
+	}
+
+**Игра в пирамидки:**
+void Townes(string with = "1", string on = "3", string some = "2", int count = 4)
+{
+	if(count > 1) Townes(withm, some, on, count--);
+	Console.WriteLine($"{with} >> {on}");
+	if(count > 1) Townes(withm, some, on, count--);
+}
+	
+5. **Рекурсия применяется часто**, когда операцию можно представить в виде **Бинарного дерева**
+ПРИКРЕПИТЬ КАРТИНКУ БИНАРНОГО ДЕРЕВА!
+((4 - 2) * (1 + 3)) / 10;
+То есть любое выражение можно представить как набор действий, где каждая переменная и каждый оператор это отдельная переменная. Таким образом разбив выражение на отдельные составляющие, вместе их можно хранить в одномерном массиве.
+string[] result = {emp, /, *, 10, -, +, emp, emp, 4, 2, 1, 3}; 
+Осталось описать логику обхода этого массива....
+
+string emp = String.Empty;
+string[] result = {emp, /, *, 10, -, +, emp, emp, 4, 2, 1, 3}; 
+
+void InOrderTravensia(int pos = 1)
+{
+	if(pos < result.Length)
+	{
+		int left = 2 * pos;
+		int right = 2 * pos + 1;
+		if(left < result.Length && !String.IsNullOrEmpty(result[left])) InOrderTravensia(left);
+			Console.WriteLine(result[pos]);
+		if(right < result.Length && !String.IsNullOrEmpty(result[right])) InOrderTravensia(right);
+	}									
+}
+Про деревья - https://ru.wikipedia.org/wiki/%D0%94%D0%B2%D0%BE%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE
+Обход дерева - https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%85%D0%BE%D0%B4_%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%B0
+																			
+6. **Обратная сторона рекурсии**
+Первое что нужно отметить, это долгое время подсчета. Рекурсия делает множество вызовов, что затягивает время обработки, по сравнению с циклом. Вторая проблема, это переполнение стека. Ограничение памяти и ограниченное количество вызовов и программа вылетит или зависнет.
+										
