@@ -321,3 +321,69 @@ PrintMatrix(
 35. **Используйте словари** для подсветки ошибок русского и английского языка.
 
 36. **Единая Система Программной Докумментации** - ЕСПД.
+
+##Лекция 6 - Рекурсия
+1. **Рекурсия** - это такая функция, которая вызывает сама себя.
+   
+2. **Перед запуском** любой программы, необходимо точно для себя определить, какой результат мы ожидаем получить на выходе.
+   
+3. **При описание рекурсии** важно четко прописать условия выхода из нее. Иначе это все превратится в бесконечный цикл и стек оверфлоу (переполнение стека).
+   
+4. Примеры использования рекурсии:
+**Вывод числа от А до Б:**
+int Numbers(int a, int b)
+   {
+      if(a<=b) return $"{a} " + Numbers(a + 1, b);
+   }
+              
+**Вывод числа от Б до А:**
+int Numbers(int a, int b)
+   {
+      if(a<=b) return Numbers(a + 1, b) + $"{a} ";
+   }        
+   
+**Сумма чисел от 0 до 1:**
+int SumRec(int n)
+   {
+      if(n == 0) return 0;
+      else return n + SumRec(n - 1);
+   }
+   
+**Найти факториал числа N:**
+int FactorialRec(int n)
+   {
+      if(n == 1) return 1;
+      else return n * FactorialRec(n - 1);
+   }
+   
+**Возвести А в степень Б:**
+int PowerRec(int a, int b)
+   { //return n == 0 ? 1: PowerRec(a, b - 1) * a; Альтернативный вариант записи. Однострочный код. Тернальный оператор.
+      if(n == 0) return 1;
+      else return PowerRec(a, n - 1) * a;
+   }
+
+**Возвести А в степень Б:**
+int PowerRec(int a, int b)
+   { 
+      if(n == 0) return 1;
+      else if(n % 2 == 0) return PowerRec(a + a, n/1);
+      else return PowerRec(a, n - 1) * a;
+   }
+   
+**Задача имеет 4 буквы: а и б с. Покажите все возможные комбинации слов состоящих из n букв.**
+itn n = 1
+void FindWords(string alphabet, char[] word, int length = 0)
+   {
+      if(length == word.Length)
+      {
+         Console.WriteLine($"{n++} {new String(word)} ");
+         return;
+      }
+      for(int i = 0; i < alphabet.Length; i++)
+         {
+            word[length] = alphabet[i];
+            FindWords(alphabet, word, length++)
+         }
+    }
+ Данный метод хорош, т. к. отвязан от конкретного количества циклов.                                 
